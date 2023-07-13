@@ -1,0 +1,15 @@
+1. 없어진 메소드 있어서 추가
+
+@Override
+	public void insertImage(ImageBean imageBean) throws Exception {
+		imageMapper.insertImage(imageBean);
+	}
+	
+2. loginPro 메소드 수정 
+
+@PostMapping("/member/loginPro")
+	public String loginPro(MemberBean bean, SellerBean sellerBean, HttpServletRequest request,
+			RedirectAttributes rttr)
+			
+			
+3. 리뷰 연결

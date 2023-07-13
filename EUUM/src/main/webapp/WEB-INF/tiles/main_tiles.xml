@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="euc-kr" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+"-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+  "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+ <!-- 1. 기본 템플릿 생성
+    	header, body, footer를 가진 layout.jsp라는 기본 레이아웃을 정의
+     -->
+	<definition name="main_layout" template="/WEB-INF/tiles/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/tiles/header.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/main/main.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/tiles/footer.jsp" />
+	</definition>
+
+	<definition name="admin_layout" template="/WEB-INF/tiles/admin/admin_Layout.jsp">
+		<put-attribute name="sidebar" value="/WEB-INF/tiles/admin/sidebar.jsp" />
+		<put-attribute name="topbar" value="/WEB-INF/tiles/admin/topbar.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/main/main.jsp" />
+	</definition>
+
+	<definition name="mypage_layout" template="/WEB-INF/tiles/myPage/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/tiles/header.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/myPage/sellerList.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/tiles/footer.jsp" />
+	</definition>
+	
+	
+	<definition name="myPage/*" extends="mypage_layout">
+		<put-attribute name="body" value="/WEB-INF/views/myPage/{1}.jsp"/>
+	</definition>
+	
+	<definition name="admin/*" extends="admin_layout">
+		<put-attribute name="body" value="/WEB-INF/views/admin/{1}.jsp"/>
+	</definition>
+	
+	<definition name="admin/*/*" extends="admin_layout">
+		<put-attribute name="body" value="/WEB-INF/views/admin/{1}/{2}.jsp"/>
+	</definition>
+	
+	<definition name="*/*" extends="main_layout">
+		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp"/>
+	</definition>
+
+
+
+	
+</tiles-definitions>
